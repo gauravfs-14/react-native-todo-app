@@ -1,14 +1,15 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function TodoItem({ item, pressHandler }) {
   return (
     <View style={styles.container}>
       <Text>{item.text}</Text>
-
-      <Button
-        title="Delete"
+      <MaterialIcons
+        name="delete"
         color="#0e132b"
         onPress={() => pressHandler(item.key)}
+        size={24}
       />
     </View>
   );

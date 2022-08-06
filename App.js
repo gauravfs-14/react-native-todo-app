@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   StatusBar,
+  ScrollView,
 } from "react-native";
 import AddTodo from "./components/AddTodo";
 import Header from "./components/Header";
@@ -32,29 +33,31 @@ export default function App() {
     }
   };
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}
-    >
-      <View style={styles.container}>
-        {/* header  */}
-        <Header />
-        <View style={styles.content}>
-          {/* to form  */}
-          <AddTodo submitHandler={submitHandler} />
-          <View style={styles.list}>
-            <FlatList
-              data={todos}
-              renderItem={({ item }) => (
-                <TodoItem item={item} pressHandler={pressHandler} />
-              )}
-            />
+    <ScrollView>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        <View style={styles.container}>
+          {/* header  */}
+          <Header />
+          <View style={styles.content}>
+            {/* to form  */}
+            <AddTodo submitHandler={submitHandler} />
+            <View style={styles.list}>
+              <FlatList
+                data={todos}
+                renderItem={({ item }) => (
+                  <TodoItem item={item} pressHandler={pressHandler} />
+                )}
+              />
+            </View>
           </View>
+          <StatusBar />
         </View>
-        <StatusBar />
-      </View>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </ScrollView>
   );
 }
 
