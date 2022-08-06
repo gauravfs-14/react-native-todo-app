@@ -15,7 +15,6 @@ import TodoItem from "./components/TodoItem";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
-
   const pressHandler = (key) => {
     setTodos((prev) => {
       return prev.filter((todo) => todo.key != key);
